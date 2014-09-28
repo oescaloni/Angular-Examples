@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="carApp">
+<head>
+  <meta charset="utf-8">
+  <title>Car table order by</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="CarListCtrl">
+
+<select ng-model="orderField1">
+  <option value="">default</option>
+  <option value="marca">marca</option>
+  <option value="modelo">modelo</option>
+  <option value="matricula">matricula</option>
+</select>
+<select ng-model="orderField2">
+  <option value="">default</option>
+  <option value="marca">marca</option>
+  <option value="modelo">modelo</option>
+  <option value="matricula">matricula</option>
+</select>
+
+<select ng-model="orderFieldAction">
+  <option value="false">ASC</option>
+  <option value="true">DESC</option>
+</select>
+  <ul>
+    <li ng-repeat="car in cars |orderBy:orderField2:orderFieldAction|orderBy:orderField1:orderFieldAction">
+      {{car.marca}}
+      <p>modelo: {{car.modelo}}</p>
+      <p>matricula: {{car.matricula}}</p>
+    </li>
+  </ul>
+</body>
+</html>
